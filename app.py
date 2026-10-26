@@ -223,7 +223,7 @@ st.markdown(f"""
 st.markdown("""
     <div class="info-card">
         <p style="margin:0;">
-            🌐 Panel de telemetría e interactividad inalámbrica. Controla la <strong>Lámpara Neón</strong> y la posición del <strong>Servomotor Palanca</strong> enviando tramas JSON al Broker MQTT.
+            🌐 Panel de telemetría e interactividad inalámbrica. Controla la <strong>Lámpara Neón</strong> y la posición del <strong>Servomotor Palanca</strong> enviando tramas JSON al Broker MQTT. Monitorea tus propias acciones, observando a la izquierda las veces que interactuas con los botones y la palanca, como también viendo tu historial de uso en la parte inferior de la página, muy bueno para tomar registros en mecanismos manín.
         </p>
     </div>
 """, unsafe_allow_html=True)
