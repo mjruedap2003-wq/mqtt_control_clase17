@@ -86,7 +86,7 @@ st.markdown("""
     }
 
     /* Botones Neón */
-    div.stButton > button {
+    div.stButton > button, a.wokwi-link {
         width: 100%;
         background: transparent !important;
         color: #00FF66 !important;
@@ -96,9 +96,13 @@ st.markdown("""
         font-size: 1.1rem !important;
         box-shadow: 0 0 10px rgba(0, 255, 102, 0.2) !important;
         transition: all 0.3s ease-in-out !important;
+        text-align: center;
+        display: block;
+        text-decoration: none;
+        padding: 10px;
     }
 
-    div.stButton > button:hover {
+    div.stButton > button:hover, a.wokwi-link:hover {
         background-color: #00FF66 !important;
         color: #0A0E17 !important;
         box-shadow: 0 0 20px rgba(0, 255, 102, 0.8) !important;
@@ -136,6 +140,17 @@ st.markdown("""
         padding: 1rem;
         margin-bottom: 1.5rem;
     }
+
+    /* Caja especial para el enlace de Wokwi */
+    .wokwi-box {
+        background: #121826;
+        border: 2px solid #FF007F;
+        border-radius: 12px;
+        padding: 1.2rem;
+        text-align: center;
+        box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+        margin-bottom: 1.5rem;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -151,9 +166,10 @@ if "servo_angle" not in st.session_state:
 if "action_history" not in st.session_state:
     st.session_state.action_history = []
 
-# Configuración MQTT Broker
+# Configuración MQTT Broker y Enlace Wokwi
 broker = "157.230.214.127"
 port = 1883
+WOKWI_URL = "https://wokwi.com/projects/477958518911351809"
 
 def send_mqtt_message(client_id, topic, payload_dict):
     """Función auxiliar para publicar mensajes MQTT hacia Wokwi."""
@@ -176,6 +192,10 @@ with st.sidebar:
     st.write("**Target Simulación:** Wokwi ESP32 / Arduino")
 
     st.markdown("---")
+    st.markdown('<div class="cyan-sub-title">🔗 Simulación Interactiva</div>', unsafe_allow_html=True)
+    st.markdown(f'<a href="{WOKWI_URL}" target="_blank" class="wokwi-link">🌐 ABRIR WOKWI PROJECT</a>', unsafe_allow_html=True)
+
+    st.markdown("---")
     st.markdown('<div class="cyan-sub-title">📊 Contadores de Uso</div>', unsafe_allow_html=True)
     st.metric("Encendidos (ON)", f"{st.session_state.on_count} veces")
     st.metric("Apagados (OFF)", f"{st.session_state.off_count} veces")
@@ -189,12 +209,21 @@ with st.sidebar:
         st.rerun()
 
 # --- ENCABEZADO PRINCIPAL ---
-st.markdown('<h1 class="neon-title">⚡ CYBERCONTROL PARA AMIGOS MQTT: WOKWI STUDIO 🤖</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="neon-title">⚡ CYBERCONTROL MQTT: WOKWI STUDIO 🤖</h1>', unsafe_allow_html=True)
+
+# Tarjeta destacada para el acceso del profesor al circuito Wokwi
+st.markdown(f"""
+    <div class="wokwi-box">
+        <h3 style="color: #FF007F; margin-top: 0;">🛠️ ACCESO AL CIRCUITO DEL PROFESOR</h3>
+        <p style="color: #E2E8F0;">Accede a la simulación en tiempo real configurada en Wokwi para ver la respuesta del circuito físico simulado:</p>
+        <a href="{WOKWI_URL}" target="_blank" class="wokwi-link" style="max-width: 350px; margin: 0 auto;">🚀 ABRIR PROYECTO WOKWI EN VIVO</a>
+    </div>
+""", unsafe_allow_html=True)
 
 st.markdown("""
     <div class="info-card">
         <p style="margin:0;">
-            🌐 Panel de telemetría e interactividad inalámbrica. Asegurate manín de tener tu wokwi a mano pa que esto funcione al 100. Controla la <strong>Lámpara Neón</strong> y la posición del <strong>Servomotor Palanca</strong> enviando tramas JSON al Broker MQTT.
+            🌐 Panel de telemetría e interactividad inalámbrica. Controla la <strong>Lámpara Neón</strong> y la posición del <strong>Servomotor Palanca</strong> enviando tramas JSON al Broker MQTT.
         </p>
     </div>
 """, unsafe_allow_html=True)
@@ -261,11 +290,7 @@ st.markdown("---")
 st.markdown('<div class="cyan-sub-title">📜 3. Historial de Acciones y Telemetría</div>', unsafe_allow_html=True)
 
 if st.session_state.action_history:
-    for act in st.session_state.action_history[:8]:  # Muestra los últimos 8 registros
+    for act in st.session_state.action_history[:8]:
         st.markdown(f"- `{act}`")
 else:
     st.info("💡 Aún no se han realizado acciones en esta sesión.")
-
-
-
-
