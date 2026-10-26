@@ -189,7 +189,7 @@ with st.sidebar:
         st.rerun()
 
 # --- ENCABEZADO PRINCIPAL ---
-st.markdown('<h1 class="neon-title">⚡ CYBERCONTROL MQTT: WOKWI STUDIO 🤖</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="neon-title">⚡ CYBERCONTROL PARA AMIGOS MQTT: WOKWI STUDIO 🤖</h1>', unsafe_allow_html=True)
 
 st.markdown("""
     <div class="info-card">
