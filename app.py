@@ -209,7 +209,7 @@ with st.sidebar:
         st.rerun()
 
 # --- ENCABEZADO PRINCIPAL ---
-st.markdown('<h1 class="neon-title">⚡ CYBERCONTROL MQTT: WOKWI STUDIO 🤖</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="neon-title">⚡ CYBERCONTROL MQTT: WOKWI STUDIO PARA AMIGOS 🤖</h1>', unsafe_allow_html=True)
 
 # Tarjeta destacada para el acceso del profesor al circuito Wokwi
 st.markdown(f"""
