@@ -214,7 +214,7 @@ st.markdown('<h1 class="neon-title">⚡ CYBERCONTROL MQTT: WOKWI STUDIO 🤖</h1
 # Tarjeta destacada para el acceso del profesor al circuito Wokwi
 st.markdown(f"""
     <div class="wokwi-box">
-        <h3 style="color: #FF007F; margin-top: 0;">🛠️ ACCESO AL CIRCUITO DEL PROFESOR</h3>
+        <h3 style="color: #FF007F; margin-top: 0;">🛠️ ACCESO AL CIRCUITO MELO WOKWI</h3>
         <p style="color: #E2E8F0;">Accede a la simulación en tiempo real configurada en Wokwi para ver la respuesta del circuito físico simulado:</p>
         <a href="{WOKWI_URL}" target="_blank" class="wokwi-link" style="max-width: 350px; margin: 0 auto;">🚀 ABRIR PROYECTO WOKWI EN VIVO</a>
     </div>
